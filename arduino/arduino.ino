@@ -7,12 +7,12 @@
 #define N  'F'
 #define NE 'E'
 #define E  'R'
-#define SE 'C'
+//#define SE 'C'
 #define S  'G'
 #define SW 'Z'
 #define W  'L'
 #define NW 'Q'
-#define S  'S'
+//#define S  'S'
 
 char incomingByte;
 unsigned long currentTime, lastCommandTime, autoOFF;
