@@ -21,31 +21,30 @@ void setup() {
   Serial.begin(9600); // Init serial
   pinMode(LED_BUILTIN, OUTPUT);
 
-  pinMode(LM1, OUTPUT);
-  pinMode(LM2, OUTPUT);
+  pinMode(LM1, OUTPUT); // Output to left motor pin 1
+  pinMode(LM2, OUTPUT); // and pin 2
   pinMode(RM1, OUTPUT);
   pinMode(RM2, OUTPUT);
-  // Setup all the pins
-  autoOFF = 500;
+  autoOFF = 500;        // How long the car moves before stopping if no connection
   currentTime = millis();
   lastCommandTime = currentTime;
 
 }
 
 void loop() {
-  /*
-  controlCar(1, 0, 1, 0);
-  delay(1000);                       // wait for a second
+  // These 4 lines are for testing purposes
+  controlCar(1, 0, 1, 0); // 
+  delay(1000);            // wait for a second
   controlCar(0, 1, 0, 1);
   delay(1000);
   
-  if (Serial.available() > 0) { // Read only the latest command
+  if (Serial.available() > 0) { // If there is data from bluetooth
     incomingByte = Serial.read();
     controlCar(1, 0, 1, 0);
-    delay(1000);
+    delay(10000);
     }
-  */
-
+  
+/*
   while (Serial.available() > 1) { // clear all but the latest byte
     incomingByte = Serial.read(); // read byte
   }
@@ -85,9 +84,11 @@ void loop() {
   else if (incomingByte == S) {
     controlCar(1, 1, 1, 1);
   }
-
+*/
 }
 
+// Car/motor control function, arguments are booleans (0 or 1)
+// 1,0 or 0,1 the motor spins one way or another, 1,1 or 0,0 stops it
 void controlCar(int left1, int left2, int right1, int right2) {
   digitalWrite(LM1, left1);
   digitalWrite(LM2, left2);
